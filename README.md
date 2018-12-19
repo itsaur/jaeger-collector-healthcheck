@@ -1,2 +1,2 @@
-# jaeger-collector-heatchcheck
-Jeager Collector with healthcheck
+# jaeger-collector-healthcheck
+Jaeger Collector with healthcheck

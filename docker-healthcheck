@@ -1,0 +1,15 @@
+#!/bin/bash
+set -eo pipefail
+
+host=$(hostname -i || echo 127.0.0.1)
+
+if health=$(curl -fILSs -w %{http_code}\\n -o /dev/null "http://${host}:14269/")
+then
+	[[ "${health}" -eq 204 ]] && exit 0
+
+	echo "Jaeger collector responded with ${health}."
+fi
+
+curl -fILSs "http://${host}"
+
+exit 1
